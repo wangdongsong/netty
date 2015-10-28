@@ -1,0 +1,38 @@
+group 'netty-exercises'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+//apply plugin: 'war'
+
+sourceCompatibility = 1.8
+
+task createJavaProject << {
+    sourceSets*.java.srcDirs*.each { it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each { it.mkdirs()}
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+    //maven {url "http://maven.oschina.net/content/groups/public/"}
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'io.netty:netty-all:5.0.0.Alpha2'
+    compile 'org.msgpack:msgpack:0.6.12'
+    compile 'org.jboss.marshalling:jboss-marshalling-serial:2.0.0.Beta2'
+    compile 'org.jboss.marshalling:jboss-marshalling:2.0.0.Beta2'
+
+    compile 'com.google.protobuf:protobuf-java:2.6.1'
+
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.4'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.4'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.4'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-jul', version: '2.4'
+    //compile group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: '2.4'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-jcl', version: '2.4'
+}
