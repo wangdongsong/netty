@@ -1,0 +1,4 @@
+ProtobufDecoder只负责解码，不支持读半包，因此在ProtubufDecoder前面一定要有能够处理半包的解码器，有以下三种方式
+> *  使用Netty提供的ProtobufVarint32FrameDecoder，它可以处理半包消息
+> * 继承Netty提供的通半包解码器LengthFieldBasedFrameDecoder
+> * 继承ByteToMessageDecoder类，自己处理半包消息
